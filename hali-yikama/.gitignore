@@ -1,0 +1,9 @@
+node_modules
+dist
+electron/dist
+*.log
+*.sqlite
+*.db
+out
+release
+
