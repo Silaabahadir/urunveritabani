@@ -1,0 +1,49 @@
+{
+  "name": "hali-yikama",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/dist/main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"tsc -w -p electron/tsconfig.json\" \"wait-on tcp:5173 && electron .\"",
+    "start": "electron .",
+    "build:renderer": "vite build",
+    "build:main": "tsc -p electron/tsconfig.json",
+    "build": "npm run build:renderer && npm run build:main",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -l"
+  },
+  "build": {
+    "appId": "com.example.haliyikama",
+    "productName": "Hali Yikama",
+    "files": [
+      "dist/**",
+      "electron/dist/**",
+      "package.json"
+    ],
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility"
+    }
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2",
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.3",
+    "wait-on": "^7.2.0"
+  }
+}
+
